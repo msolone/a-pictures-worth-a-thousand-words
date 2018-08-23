@@ -7,20 +7,41 @@ class PhotoList extends Component {
     super(props, context);
     this.state = {
       about: {
- 
+          photos:[]
       }
     };
   }
 
+  componentDidMount() {
+    this.setState({
+      about: Data[this.props.match.params.category]
+    });
+    console.log(Data[this.props.match.params.category].photos);
+  }
 
   render() {
-      console.log(this)
+    console.log(this.state);
     return (
-      <div className='about-page'>
-        <h2>{Data[this.props.match.params.category].title}</h2>
-        <p>{Data[this.props.match.params.category].description}</p>
+      <div className="about-page">
+        <h2>{this.state.about.title}</h2>
+        <p>{this.state.about.description}</p>
         <section className="about">
-        {Data[this.props.match.params.category].photos.map((photo, i) => {
+          {this.state.about.photos.map((photo, i) => {
+            return (
+              <Link to={`./${this.props.match.params.category}/${i}`} key={i}>
+                <img
+                  src={photo.imageURL}
+                  alt={photo.title}
+                  className="about-photo"
+                />
+                <p>{photo.title}</p>
+              </Link>
+            );
+          })}
+        </section>
+
+        {/* <section className="about">
+        {this.state.about.photos.map((photo, i) => {
             return (
                 <Link to={`./${this.props.match.params.category}/${i}`} key={i}>
                 <img src={photo.imageURL} alt={photo.title} className='about-photo' />
@@ -29,11 +50,9 @@ class PhotoList extends Component {
             )
         })}
 
-        </section>
-            
-    </div>
-    )
-    
+        </section> */}
+      </div>
+    );
   }
 }
 
