@@ -14,18 +14,18 @@ class CategoryList extends Component {
     this.setState({
       list: Data
     });
-    console.log(Data);
   }
 
   render() {
     return (
       <ul className="home-page-ul">
-        {Object.values(this.state.list).map((hobby, i) => {
-          console.log(hobby.photos[0].imageURL);
+        {Object.keys(this.state.list).map((key, i) => {
+            const hobby = this.state.list[key]
+          console.log(key);
           return (
             <li key={i}>
             <div className='description-box'>
-              <Link to="Panda Component">
+              <Link to={`./${key}`}>
                 <h1>{hobby.title}</h1>
               </Link>
               <p>{hobby.description}</p>

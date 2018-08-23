@@ -4,7 +4,7 @@ class PhotoDetail extends Component {
     render() {
         return (
             <h1>
-                Page 2
+                Photo Detail
             </h1>
         );
     }

@@ -6,7 +6,7 @@ class Nav extends Component {
     return (
       <nav>
           <h1>Things I like</h1>
-          <p>A photo gallery by Jason L Perry</p>
+          <p>A Photo Gallery by Jason L Perry</p>
         {/* <ul>
           <li>
             <Link to="/">Home</Link>
