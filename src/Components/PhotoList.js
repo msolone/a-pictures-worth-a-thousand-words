@@ -16,7 +16,6 @@ class PhotoList extends Component {
     this.setState({
       about: Data[this.props.match.params.category]
     });
-    console.log(Data[this.props.match.params.category].photos);
   }
 
   render() {
@@ -39,18 +38,6 @@ class PhotoList extends Component {
             );
           })}
         </section>
-
-        {/* <section className="about">
-        {this.state.about.photos.map((photo, i) => {
-            return (
-                <Link to={`./${this.props.match.params.category}/${i}`} key={i}>
-                <img src={photo.imageURL} alt={photo.title} className='about-photo' />
-                <p>{photo.title}</p>
-                </Link>
-            )
-        })}
-
-        </section> */}
       </div>
     );
   }
