@@ -17,8 +17,8 @@ class App extends Component {
           <section className="body">
             <Switch>
               <Route path="/" exact component={CategoryList} />
-              {/* <Route path="/:category/" exact component={PhotoDetail} />  */}
               <Route path="/:category" exact component={PhotoList} />
+              <Route path="/:category/:id" exact component={PhotoDetail} /> 
             </Switch>
           </section>
         </div>

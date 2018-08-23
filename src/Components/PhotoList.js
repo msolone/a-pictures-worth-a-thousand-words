@@ -7,78 +7,33 @@ class PhotoList extends Component {
     super(props, context);
     this.state = {
       about: {
-        title: "",
-        description: "",
-        photos: [],
-        imageURL: ""
+ 
       }
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      about: Data[this.props.match.params.category]
-    });
-  
-  }
 
   render() {
-    console.log(this.state.about);
+      console.log(this)
     return (
       <div className='about-page'>
-        <h2>{this.state.about.title}</h2>
-        <p>{this.state.about.description}</p>
+        <h2>{Data[this.props.match.params.category].title}</h2>
+        <p>{Data[this.props.match.params.category].description}</p>
         <section className="about">
-          <Link to={`./${this.state}`}>
-            <img
-              className="about-images"
-              src={
-                this.state.about.photos[0] &&
-                this.state.about.photos[0].imageURL
-              }
-              alt={
-                this.state &&
-                this.state.about &&
-                this.state.about.photos &&
-                this.state.about.photos[0] &&
-                this.state.about.photos[0].title
-              }
-            />
-            <p>
-              {this.state &&
-                this.state.about &&
-                this.state.about.photos &&
-                this.state.about.photos[0] &&
-                this.state.about.photos[0].title}
-            </p>
-          </Link>
+        {Data[this.props.match.params.category].photos.map((photo, i) => {
+            return (
+                <Link to={`./${this.props.match.params.category}/${i}`} key={i}>
+                <img src={photo.imageURL} alt={photo.title} className='about-photo' />
+                <p>{photo.title}</p>
+                </Link>
+            )
+        })}
 
-          <Link to="pandas">
-            <img
-              className="about-images"
-              src={
-                this.state.about.photos[1] &&
-                this.state.about.photos[1].imageURL
-              }
-              alt={
-                this.state &&
-                this.state.about &&
-                this.state.about.photos &&
-                this.state.about.photos[1] &&
-                this.state.about.photos[1].title
-              }
-            />
-            <p>
-              {this.state &&
-                this.state.about &&
-                this.state.about.photos &&
-                this.state.about.photos[1] &&
-                this.state.about.photos[1].title}
-            </p>
-          </Link>
         </section>
-      </div>
-    );
+            
+    </div>
+    )
+    
   }
 }
 
